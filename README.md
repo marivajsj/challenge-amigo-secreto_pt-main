@@ -11,7 +11,7 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
 ## Tecnologias Utilizadas
 - Linguagem: [Java Script, HTML e CSS]
 - Framework: [Informe o framework]
-- Banco de Dados: [Informe o banco de dados]
+- Banco de Dados: [Arrays]
 
 ## Como Executar o Projeto
 1. Clone o repositório:
@@ -53,4 +53,4 @@ Este projeto está licenciado sob a [Nome da Licença].
 ## Contato
 - Nome: [Marivaldo]
 - Email: [marivajsj@gmail.com]
-- LinkedIn: [[Seu LinkedIn](https://www.linkedin.com/in/marivaldojsjr/)]
+- LinkedIn: [(https://www.linkedin.com/in/marivaldojsjr/)]
