@@ -51,6 +51,6 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
 Este projeto está licenciado sob a [Nome da Licença].
 
 ## Contato
-- Nome: [Marivaldo]
-- Email: [marivajsj@gmail.com]
-- LinkedIn: [(https://www.linkedin.com/in/marivaldojsjr/)]
+- Nome: Marivaldo
+- Email: marivajsj@gmail.com
+- LinkedIn: https://www.linkedin.com/in/marivaldojsjr/
