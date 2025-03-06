@@ -1,8 +1,6 @@
 let nomes = [];             // Array que armazena os nomes que serão digitados pelo usuário para o sorteio
 let nomesSorteados = [];    // Array que armazena os nomes sorteados
 
-
-
 // Capturar a tecla "Enter" no campo de texto
 const inputNome = document.getElementById("amigo");
 inputNome.addEventListener("keypress", function (event) {
@@ -37,7 +35,6 @@ function sortearAmigo() {
     } else {
         let indice = Math.floor(Math.random() * nomes.length); // Sorteia um índice do array de nomes
         let nomeSorteado = nomes[indice]; // Pega o nome sorteado
-        //alert("O amigo sorteado foi: " + nomeSorteado + "!"); // Exibe um alerta com o nome sorteado
         document.getElementById("resultado").innerHTML = "O amigo sorteado foi: " + nomeSorteado + "!"; // Exibe os nome sorteado na tela
         nomesSorteados.push(nomeSorteado); // Adiciona o nome sorteado ao array de nomes sorteados
         nomes.splice(indice, 1); // Remove o nome sorteado do array de nomes
@@ -103,7 +100,8 @@ function validarNomeProprio(nome, config = { min: 2, max: 100 }, nomesExistentes
 function nomesSorteadosOrdemSorteio() {
     document.getElementById("resultado").innerHTML = nomesSorteados.join(", "); // Exibe os nomes sorteados na tela
 }
-//Função limpar campo de texto
+
+// Função limpar campo de texto
 function limparCampo() {
     document.getElementById("amigo").value = ""; // Limpa o campo de input
 }
@@ -114,7 +112,7 @@ function limparTela() {
     document.getElementById("resultado").innerHTML = ""; // Limpa o resultado
 }
 
-//Função normalizar nome digitado
+// Função normalizar nome digitado
 function normalizarNome(nome) {
     const preposicoes = ["de", "da", "do", "dos", "das", "e"]; // Lista de preposições comuns
 
