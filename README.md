@@ -8,10 +8,12 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
 - Sorteio de amigo secreto
 - Envio de notificações
 
-## Tecnologias Utilizadas
-- Linguagem: [Java Script, HTML e CSS]
-- Framework: [Informe o framework]
-- Banco de Dados: [Arrays]
+## 🚀 Tecnologias
+<div>
+  <img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+</div>
 
 ## Como Executar o Projeto
 1. Clone o repositório:
@@ -51,6 +53,6 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
 Este projeto está licenciado sob a [Nome da Licença].
 
 ## Contato
-- Nome: Marivaldo
-- Email: marivajsj@gmail.com
-- LinkedIn: https://www.linkedin.com/in/marivaldojsjr/
+
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/7611162?v=4" width=115><br><sub>Marivaldo Júnior</sub>](https://github.com/marivajsj) |
+| :---: | 
