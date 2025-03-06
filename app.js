@@ -6,6 +6,7 @@ let nomesSorteados = [];    // Array que armazena os nomes sorteados
 // Função que adiciona um amigo ao array de nomes
 function adicionarAmigo() {
     let nome = document.getElementById("amigo").value; // Pega o nome digitado pelo usuário
+    nome = normalizarNome(nome); // Normaliza o nome digitado pelo usuário
     let validacao = validarNomeProprio(nome); // Valida o nome digitado pelo usuário
     if (validacao !== "Nome válido!") { // Verifica se o nome digitado é válido
         alert(validacao); // Exibe um alerta caso o nome digitado não seja válido
@@ -81,7 +82,7 @@ function validarNomeProprio(nome, config = { min: 2, max: 100 }, nomesExistentes
         erros.push("Todas as palavras devem ter pelo menos 2 letras.");
     }
 
-    // 8. Verificar maiúsculas iniciais para cada palavra
+    // 8. Verificar maiúsculas iniciais para cada palavra (já tratado pela normalização)
     const regexPrimeiraMaiuscula = /^[A-ZÀ-Ö][a-zà-ö]+(?: [A-ZÀ-Ö][a-zà-ö]+)*$/;
     if (!regexPrimeiraMaiuscula.test(nome)) {
         erros.push("Cada palavra deve começar com letra maiúscula.");
@@ -104,15 +105,17 @@ function limpar() {
     document.getElementById("resultado").innerHTML = ""; // Limpa o resultado
 }
 
-//Função normalizar nome
-function normalizar() {
-    let nome = document.getElementById("amigo").value;
-    let nomeNormalizado = nome
-        .trim() // Remove espaços no início e no fim
+//Função normalizar nome digitado
+function normalizarNome(nome) {
+    const preposicoes = ["de", "da", "do", "dos", "das", "e"]; // Lista de preposições comuns
+
+    // Normalizar o texto
+    return nome
+        .trim() // Remove espaços no início e no final
         .replace(/\s+/g, " ") // Remove espaços consecutivos
         .split(" ") // Divide o nome em palavras
-        .filter(palavra => palavra.length > 0) // Remove palavras vazias
-        .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase()) // Define a primeira letra de cada palavra como maiúscula e as demais como minúsculas
-        .join(" "); // Junta as palavras com um espaço        
-    document.getElementById("amigo").value = nomeNormalizado;
+        .filter(palavra => !preposicoes.includes(palavra.toLowerCase())) // Remove preposições
+        .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase()) // Capitaliza
+        .join(" "); // Rejunta as palavras em uma única string
 }
+
