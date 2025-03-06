@@ -1,13 +1,17 @@
 let nomes = [];             // Array que armazena os nomes que serão digitados pelo usuário para o sorteio
 let nomesSorteados = [];    // Array que armazena os nomes sorteados
-var re = /^[A-zÀ-ú '´]+$/ // Expressão regular para verificar se o nome digitado pelo usuário é válido
+
 
 
 // Função que adiciona um amigo ao array de nomes
 function adicionarAmigo() {
     
     let nome = document.getElementById("amigo").value; // Pega o nome digitado pelo usuário
-    if (nomes.includes(nome)) { // Verifica se o nome digitado já está no array de nomes
+    let validacao = validarNomeProprio(nome); // Valida o nome digitado pelo usuário
+    if (validacao !== "Nome válido!") { // Verifica se o nome digitado é válido
+        alert(validacao); // Exibe um alerta caso o nome digitado não seja válido
+        document.getElementById("amigo").value = ""; // Limpa o campo de input
+    } else if (nomes.includes(nome)) { // Verifica se o nome digitado já está no array de nomes
         testInfo(document.getElementById("amigo"));
         alert("Este amigo já foi adicionado! Tente adicionar um novo nome."); // Exibe um alerta caso o nome já esteja no array de nomes
         document.getElementById("amigo").value = ""; // Limpa o campo de input
@@ -37,54 +41,28 @@ function sortearAmigo() {
     
     
 }
-// Função que verifica se o nome digitado pelo usuário é válido
-// function verificarNome() {
-//     let nome = document.getElementById("amigo").value; // Pega o nome digitado pelo usuário
-//     if (nome === "") { // Verifica se o nome digitado é vazio
-//         alert("Digite um nome válido!"); // Exibe um alerta caso o nome digitado seja vazio
-//     } else if (nomes.includes(nome)) { // Verifica se o nome digitado já está no array de nomes
-//         alert("Este amigo já foi adicionado! Tente adicionar um novo nome."); // Exibe um alerta caso o nome já esteja no array de nomes
-//     } else if (nome.length < 3) { // Verifica se o nome digitado tem menos de 3 caracteres
-//         alert("Digite um nome com mais de 3 caracteres!"); // Exibe um alerta caso o nome digitado tenha menos de 3 caracteres
-//     } else if (!isNaN(nome)) { // Verifica se o nome digitado contém números
-//         alert("Digite um nome válido! Números não são permitidos."); // Exibe um alerta caso o nome digitado contenha números
-//     } else if (nome.includes("  ")) { // Verifica se o nome digitado contém mais de um espaço
-//         alert("Digite um nome válido! Espaços não são permitidos."); // Exibe um alerta caso o nome digitado contenha espaços
-//     } else if (nome.charAt(0) === " ") { // Verifica se o nome digitado começa com espaço
-//         alert("Digite um nome válido! Espaços no início do nome não são permitidos."); // Exibe um alerta caso o nome digitado comece com espaço
-//     } else if (nome.charAt(nome.length - 1) === " ") { // Verifica se o nome digitado termina com espaço
-//         alert("Digite um nome válido! Espaços no final do nome não são permitidos."); // Exibe um alerta caso o nome digitado termine com espaço
-//     } else if (nome.includes(" ")) { // Verifica se o nome digitado contém espaços
-//         let nomeSeparado = nome.split(" "); // Separa o nome em um array de palavras
-//         let nomeInvalido = nomeSeparado.find(palavra => palavra.length < 3); // Verifica se alguma palavra do nome tem menos de 3 caracteres
-//         if (nomeInvalido) { // Verifica se alguma palavra do nome tem menos de 3 caracteres
-//             alert("Digite um nome válido! Nomes com menos de 3 caracteres não são permitidos."); // Exibe um alerta caso alguma palavra do nome tenha menos de 3 caracteres
-//         } else {
-//             adicionarAmigo(); // Adiciona o nome ao array de nomes
-//         }
-//     } else if (nome.length >= 3) { // Verifica se o nome digitado tem 3 ou mais caracteres
-//         adicionarAmigo(); // Adiciona o nome ao array de nomes
-//     } else {
-//         alert("Digite um nome válido!"); // Exibe um alerta caso o nome digitado não seja válido
-//     }
 
-// }
 // Função que verifica se o nome digitado pelo usuário é válido
-function testInfo(nomeInput){  
-    var OK = re.exec(nomeInput.value);  
-    if (!OK)  
-      console.log(document.getElementById("amigo").value + " não é um nome válido!");  
-    else
-      console.log("Seu nome " + document.getElementById("amigo").value + " é válido");  
-  } 
+function validarNomeProprio(nome) {
+    // Remover espaços extras no início e no final
+    nome = nome.trim();
+
+    // Expressão regular para validar nomes próprios:
+    // - Deve conter apenas letras e espaços.
+    // - Deve ter entre 2 e 50 caracteres.
+    // - Não permite mais de um espaço consecutivo.
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+
+    if (regex.test(nome) && nome.length >= 2 && nome.length <= 50) {
+        return "Nome válido!";
+    } else {
+        return "Nome inválido. Certifique-se de que ele não tenha espaços extras, contenha apenas letras, e tenha entre 2 e 50 caracteres.";
+    }
+}
 
 // Função que exibe os nomes sorteados por ordem de sorteio
 function nomesSorteadosOrdemSorteio() {
     document.getElementById("resultado").innerHTML = nomesSorteados.join(", "); // Exibe os nomes sorteados na tela
-}
-function nomesSorteadosMaiusculos() {
-    let nomesMaiusculos = nomesSorteados.map(nome => nome.charAt(0).toUpperCase() + nome.slice(1)); // Coloca a primeira letra de cada nome sorteado em maiúsculo
-    document.getElementById("resultado").innerHTML = nomesMaiusculos.join(", "); // Exibe os nomes sorteados na tela
 }
 
 // Função limpar
