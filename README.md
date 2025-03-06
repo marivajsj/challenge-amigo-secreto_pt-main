@@ -16,7 +16,7 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 </div>
 
-## Link para Acesso
+## Link para Acesso ao Projeto
 
 <div>
     <div>
@@ -25,24 +25,6 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
         </a>
     </div>
 </div>
-
-## Como Executar o Projeto
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/usuario/repo.git
-    ```
-2. Navegue até o diretório do projeto:
-    ```bash
-    cd challenge-amigo-secreto_pt-main
-    ```
-3. Instale as dependências:
-    ```bash
-    []
-    ```
-4. Execute a aplicação:
-    ```bash
-    [Comando para executar a aplicação]
-    ```
 
 ## Contribuição
 1. Faça um fork do projeto
@@ -63,4 +45,4 @@ Este projeto é uma aplicação para gerenciar um amigo secreto.
 ## Contato
 
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/7611162?v=4" width=115><br><sub>Marivaldo Júnior</sub>](https://github.com/marivajsj) |
-| :---: | 
+| :---: |
