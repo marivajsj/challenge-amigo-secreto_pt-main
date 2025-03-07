@@ -35,7 +35,7 @@ function sortearAmigo() {
     } else {
         let indice = Math.floor(Math.random() * nomes.length); // Sorteia um índice do array de nomes
         let nomeSorteado = nomes[indice]; // Pega o nome sorteado
-        document.getElementById("resultado").innerHTML = "O amigo sorteado foi: " + nomeSorteado + "!"; // Exibe os nome sorteado na tela
+        exibirResultadoPorTempo(nomeSorteado); // Exibe o resultado do sorteio por 5 segundos
         nomesSorteados.push(nomeSorteado); // Adiciona o nome sorteado ao array de nomes sorteados
         nomes.splice(indice, 1); // Remove o nome sorteado do array de nomes
     }
@@ -111,6 +111,15 @@ function limparTela() {
     document.getElementById("listaAmigos").innerHTML = ""; // Limpa a lista de amigos
     document.getElementById("resultado").innerHTML = ""; // Limpa o resultado
 }
+
+// Função que exibe o resultado do sorteio por 5 segundos
+function exibirResultadoPorTempo(nomeSorteado) {
+    document.getElementById("resultado").innerHTML = "O amigo sorteado foi: " + nomeSorteado + "!"; // Exibe o nome sorteado na tela
+    setTimeout(() => {
+        document.getElementById("resultado").innerHTML = ""; // Limpa o resultado após 5 segundos
+    }, 5000); // 5000 milissegundos = 5 segundos
+}
+
 
 // Função normalizar nome digitado
 function normalizarNome(nome) {
