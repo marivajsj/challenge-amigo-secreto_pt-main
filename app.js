@@ -1,5 +1,6 @@
 let nomes = [];             // Array que armazena os nomes que serão digitados pelo usuário para o sorteio
 let nomesSorteados = [];    // Array que armazena os nomes sorteados
+let sorteioInicialRealizado = false; // Variável para rastrear se o sorteio inicial foi realizado
 
 // Capturar a tecla "Enter" no campo de texto
 const inputNome = document.getElementById("amigo");
@@ -29,15 +30,22 @@ function adicionarAmigo() {
 
 // Função que sorteia um amigo
 function sortearAmigo() {
+    if (!sorteioInicialRealizado && nomes.length < 3) { // Verifica se há menos de 3 amigos na lista e se o sorteio inicial não foi realizado
+        alert("Adicione pelo menos 3 amigos para realizar o sorteio!"); // Exibe um alerta caso haja menos de 3 amigos
+        return; // Sai da função sem realizar o sorteio
+    }
+
     if (nomes.length === 0) { // Verifica se o array de nomes está vazio
         alert("Adicione amigos para sortear!"); // Exibe um alerta caso o array de nomes esteja vazio
         limparTela(); // Limpa a lista de amigos e o resultado
+        sorteioInicialRealizado = false; // Marca que o sorteio inicial não foi realizado
     } else {
         let indice = Math.floor(Math.random() * nomes.length); // Sorteia um índice do array de nomes
         let nomeSorteado = nomes[indice]; // Pega o nome sorteado
         exibirResultadoPorTempo(nomeSorteado); // Exibe o resultado do sorteio por 5 segundos
         nomesSorteados.push(nomeSorteado); // Adiciona o nome sorteado ao array de nomes sorteados
         nomes.splice(indice, 1); // Remove o nome sorteado do array de nomes
+        sorteioInicialRealizado = true; // Marca que o sorteio inicial foi realizado
     }
 }
 
@@ -119,7 +127,6 @@ function exibirResultadoPorTempo(nomeSorteado) {
         document.getElementById("resultado").innerHTML = ""; // Limpa o resultado após 5 segundos
     }, 5000); // 5000 milissegundos = 5 segundos
 }
-
 
 // Função normalizar nome digitado
 function normalizarNome(nome) {
